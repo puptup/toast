@@ -1,28 +1,29 @@
+import { PositionsKeys } from "@constants";
 import { Toast } from "@types";
 
 class ToastService {
   private toasts: Toast[] = [];
-  private rerenderFunc: null | (() => void) = null;
+  private rerenderFunc: { [key in PositionsKeys]?: () => void } = {};
 
-  setRerenderFunction = (rerender: () => void) => {
-    this.rerenderFunc = rerender;
+  setRerenderFunction = (position: PositionsKeys, rerender: () => void) => {
+    this.rerenderFunc[position] = rerender;
   };
 
-  rerender = () => {
-    if (this.rerenderFunc) {
-      this.rerenderFunc();
+  rerender = (position: PositionsKeys) => {
+    const func = this.rerenderFunc[position];
+    if (func) {
+      func();
     }
   };
 
   addToast = (toast: Toast) => {
     this.toasts.push(toast);
-    this.rerender();
-    console.log(this.toasts);
+    this.rerender(toast.position);
   };
 
-  removeToast = (toastID: string) => {
-    this.toasts = this.toasts.filter((toast) => toast.id !== toastID);
-    this.rerender();
+  removeToast = (toast: Toast) => {
+    this.toasts = this.toasts.filter((toastElement) => toastElement.id !== toast.id);
+    this.rerender(toast.position);
   };
 
   getToasts = () => {

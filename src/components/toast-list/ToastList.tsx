@@ -1,21 +1,23 @@
 import ToastItem from "@components/toast-item";
-import { ToastProviderWrapper } from "@components/toast-provider/styled";
-import { useUpdatingToasts } from "@hooks/useToastsUpdater";
-import toastService from "@service";
-import React from "react";
+import { PositionsKeys } from "@constants";
+import { useToastsUpdater } from "@hooks/useToastsUpdater";
+import React, { FC } from "react";
 
-const ToastList = () => {
-  const toasts = useUpdatingToasts();
+import { ToastListWrapper } from "./styled";
 
-  const handleRemoveItem = (toastID: string) => {
-    toastService.removeToast(toastID);
-  };
+interface Props {
+  position: PositionsKeys;
+}
+
+const ToastList: FC<Props> = ({ position }) => {
+  const toasts = useToastsUpdater(position);
 
   return (
-    <ToastProviderWrapper>
-      {toasts.length > 0 &&
-        toasts.map((toast) => <ToastItem toast={toast} remove={handleRemoveItem} />)}
-    </ToastProviderWrapper>
+    <ToastListWrapper position={position}>
+      {toasts.map((toast) => (
+        <ToastItem key={toast.id} toast={toast} />
+      ))}
+    </ToastListWrapper>
   );
 };
 

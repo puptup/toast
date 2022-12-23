@@ -1,9 +1,10 @@
-type ToastType = "success" | "warning" | "error" | "info";
+import { PositionsKeys, VariantsKeys } from "@constants";
 
 export interface Toast {
   id: string;
-  type: ToastType;
+  type: VariantsKeys;
   gap: number;
+  position: PositionsKeys;
   timeToDelete: number;
   title: string;
   description: string;

@@ -1,20 +1,22 @@
 import ErrorBoundary from "@components/error-boundary";
-import ToastList from "@components/toast-list";
+import ToastStack from "@components/toast-stack";
 import { usePortal } from "@hooks/usePortal";
+import { GlobalStyle } from "@theme";
 import React, { FC } from "react";
 import { createPortal } from "react-dom";
 
-interface ToastProviderProps {}
+interface ToastPortalProps {}
 
-const ToastProvider: FC<ToastProviderProps> = () => {
+const ToastPortal: FC<ToastPortalProps> = () => {
   const target = usePortal();
 
   return createPortal(
     <ErrorBoundary>
-      <ToastList />
+      <ToastStack />
+      <GlobalStyle />
     </ErrorBoundary>,
     target
   );
 };
 
-export default React.memo(ToastProvider);
+export default React.memo(ToastPortal);

@@ -1,25 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import toastService from "@service";
 import { Toast } from "@types";
 import React, { FC, useEffect } from "react";
 
+import { ToastWrapper } from "./styled";
+
 interface ToastItemProps {
   toast: Toast;
-  remove: (toastID: string) => void;
 }
 
-const ToastItem: FC<ToastItemProps> = ({ toast, remove }) => {
+const ToastItem: FC<ToastItemProps> = ({ toast }) => {
+  const { type, timeToDelete, title, description } = toast;
+
   useEffect(() => {
     setTimeout(() => {
-      remove(toast.id);
-    }, toast.timeToDelete);
+      toastService.removeToast(toast);
+    }, timeToDelete);
   }, []);
 
   return (
-    <div>
-      <p>{toast.title}</p>
-      <p>{toast.description}</p>
-    </div>
+    <ToastWrapper variant={type}>
+      <p>{title}</p>
+      <p>{description}</p>
+      <button type="button" onClick={() => toastService.removeToast(toast)}>
+        close
+      </button>
+    </ToastWrapper>
   );
 };
 
-export default ToastItem;
+export default React.memo(ToastItem);

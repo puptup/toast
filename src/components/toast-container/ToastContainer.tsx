@@ -1,30 +1,31 @@
 /* eslint-disable no-plusplus */
-import ToastProvider from "@components/toast-provider";
+import ToastPortal from "@components/toast-portal";
+import { PositionsKeys, VariantsKeys } from "@constants";
 import useToasts from "@hooks/useToasts";
-import React, { useRef } from "react";
+import React, { FC } from "react";
 
-const ToastContainer = () => {
+import { Button, ContainerWrapper } from "./styled";
+
+export interface ToastContainerProps {
+  type: VariantsKeys;
+  timeToDelete: number;
+  position: PositionsKeys;
+}
+
+const ToastContainer: FC<ToastContainerProps> = ({ type, position, timeToDelete }) => {
   const { addToast } = useToasts();
-  const ref = useRef(0);
 
   const handleToasts = () => {
-    addToast({
-      timeToDelete: 1500,
-      title: "title",
-      description: "description",
-      type: "success",
-      id: String(ref.current++),
-      gap: 25,
-    });
+    addToast({ type, timeToDelete, position });
   };
 
   return (
-    <div>
-      <ToastProvider />
-      <button type="button" onClick={handleToasts}>
-        show
-      </button>
-    </div>
+    <ContainerWrapper>
+      <ToastPortal />
+      <Button type="button" onClick={handleToasts}>
+        SHOW
+      </Button>
+    </ContainerWrapper>
   );
 };
 

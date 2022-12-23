@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { PositionsKeys } from "@constants";
 import toastService from "@service";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-export const useUpdatingToasts = () => {
+export const useToastsUpdater = (positon: PositionsKeys) => {
   const [_, setRerender] = useState(true);
 
   const forceupdate = useCallback(() => {
@@ -10,8 +13,8 @@ export const useUpdatingToasts = () => {
   }, []);
 
   useEffect(() => {
-    toastService.setRerenderFunction(forceupdate);
-  }, [forceupdate]);
+    toastService.setRerenderFunction(positon, forceupdate);
+  }, []);
 
-  return toastService.getToasts();
+  return toastService.getToasts().filter((toast) => toast.position === positon);
 };

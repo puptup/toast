@@ -1,4 +1,4 @@
-import ToastProvider from "@components/toast-provider";
+import ToastPortal from "@components/toast-portal";
 import useToasts from "@hooks/useToasts";
 
-export { ToastProvider, useToasts };
+export { ToastPortal, useToasts };
