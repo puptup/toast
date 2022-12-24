@@ -9,12 +9,16 @@ interface ToastItemProps {
   toast: Toast;
 }
 
+const remove = (toast: Toast) => () => {
+  toastService.removeToast(toast);
+};
+
 const ToastItem: FC<ToastItemProps> = ({ toast }) => {
   const { type, timeToDelete, title, description } = toast;
 
   useEffect(() => {
     setTimeout(() => {
-      toastService.removeToast(toast);
+      remove(toast)();
     }, timeToDelete);
   }, []);
 
@@ -22,7 +26,7 @@ const ToastItem: FC<ToastItemProps> = ({ toast }) => {
     <ToastWrapper variant={type}>
       <p>{title}</p>
       <p>{description}</p>
-      <button type="button" onClick={() => toastService.removeToast(toast)}>
+      <button type="button" onClick={remove(toast)}>
         close
       </button>
     </ToastWrapper>

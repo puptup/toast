@@ -4,6 +4,7 @@ import React from "react";
 
 const ToastStack = () => {
   const positions = Object.keys(Positions) as PositionsKeys[];
+
   return (
     <>
       {positions.map((position) => (
