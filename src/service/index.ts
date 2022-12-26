@@ -1,15 +1,15 @@
-import { PositionsKeys } from "@constants";
+import { PositionsKeysType } from "@constants";
 import { Toast } from "@types";
 
 class ToastService {
   private toasts: Toast[] = [];
-  private rerenderFunc: { [key in PositionsKeys]?: () => void } = {};
+  private rerenderFunc: { [key in PositionsKeysType]?: () => void } = {};
 
-  setRerenderFunction = (position: PositionsKeys, rerender: () => void) => {
+  setRerenderFunction = (position: PositionsKeysType, rerender: () => void) => {
     this.rerenderFunc[position] = rerender;
   };
 
-  rerender = (position: PositionsKeys) => {
+  rerender = (position: PositionsKeysType) => {
     const func = this.rerenderFunc[position];
     if (func) {
       func();

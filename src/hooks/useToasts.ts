@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import uniqid from "uniqid";
 
 const useToasts = () => {
-  const addToast = useCallback((toast?: Partial<Toast>) => {
+  const addToast = useCallback((toast?: Partial<Omit<Toast, "id">>) => {
     toastService.addToast({
       id: uniqid(),
       ...defaultToast,

@@ -16,12 +16,15 @@ export const Positions = {
   rightBottom: { right: 0, bottom: 0 },
 };
 
-export type PositionsKeys = keyof typeof Positions;
+export type PositionsKeysType = keyof typeof Positions;
 
 export const defaultToast: Omit<Toast, "id"> = {
   type: "info",
   gap: 20,
-  timeToDelete: 1500,
+  animationDuration: 400,
+  timeToDelete: 5000,
+  animationIn: "fromBottomToTop",
+  animationOut: "fromLeftToRight",
   position: "rightBottom",
   title: "Toast",
   description: "Toast description",

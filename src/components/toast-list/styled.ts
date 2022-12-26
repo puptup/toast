@@ -1,8 +1,8 @@
-import { Positions, PositionsKeys } from "@constants";
+import { Positions, PositionsKeysType } from "@constants";
 import styled from "styled-components";
 
 interface ToastListWrapperProps {
-  position: PositionsKeys;
+  position: PositionsKeysType;
 }
 
 export const ToastListWrapper = styled.div<ToastListWrapperProps>`

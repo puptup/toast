@@ -1,12 +1,12 @@
 import ToastItem from "@components/toast-item";
-import { PositionsKeys } from "@constants";
+import { PositionsKeysType } from "@constants";
 import { useToastsUpdater } from "@hooks/useToastsUpdater";
 import React, { FC } from "react";
 
 import { ToastListWrapper } from "./styled";
 
 interface Props {
-  position: PositionsKeys;
+  position: PositionsKeysType;
 }
 
 const ToastList: FC<Props> = ({ position }) => {

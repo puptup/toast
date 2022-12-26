@@ -28,6 +28,28 @@ export default {
         type: "select",
       },
     },
+    animationIn: {
+      defaultValie: "fromBottomToTop",
+      options: ["fromBottomToTop", "fromTopToBottom", "fromLeftToRight", "fromRightToLeft"],
+      control: {
+        type: "select",
+      },
+    },
+    animationOut: {
+      defaultValie: "fromLeftToRight",
+      options: ["fromBottomToTop", "fromTopToBottom", "fromLeftToRight", "fromRightToLeft"],
+      control: {
+        type: "select",
+      },
+    },
+    animationDuration: {
+      type: "number",
+      defaultValue: 400,
+      options: [200, 400, 600],
+      control: {
+        type: "radio",
+      },
+    },
   },
 };
 
