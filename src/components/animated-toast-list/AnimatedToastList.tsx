@@ -10,7 +10,7 @@ type AnimatedToastListProps = {
 };
 
 const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element => {
-  const childrenWithRef = children as unknown as ChildrenWithRef;
+  const childrenWithRef = children as ChildrenWithRef;
 
   const [boundingBox, setBoundingBox] = useState<BoundingBoxes>({});
   const [prevBoundingBox, setPrevBoundingBox] = useState<BoundingBoxes>({});
