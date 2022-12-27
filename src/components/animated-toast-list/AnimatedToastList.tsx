@@ -3,11 +3,11 @@ import calculateBoundingBoxes, { BoundingBoxes } from "@helpers/calculateBoundin
 import usePrevious from "@hooks/usePrevious";
 import React, { RefObject, useEffect, useLayoutEffect, useState } from "react";
 
-type AnimatedToastListProps = {
-  children: React.ReactElement[];
-};
+export type ChildrenWithRef = (JSX.Element & { ref: RefObject<HTMLDivElement> })[];
 
-export type ChildrenWithRef = (React.ReactElement & { ref: RefObject<HTMLDivElement> })[];
+type AnimatedToastListProps = {
+  children: JSX.Element[];
+};
 
 const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element => {
   const childrenWithRef = children as unknown as ChildrenWithRef;
@@ -52,7 +52,7 @@ const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element =>
     }
   }, [boundingBox, prevBoundingBox, childrenWithRef]);
 
-  return childrenWithRef as unknown as JSX.Element;
+  return <>{childrenWithRef}</>;
 };
 
 export default AnimatedToastList;
