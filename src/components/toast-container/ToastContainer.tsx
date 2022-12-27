@@ -1,14 +1,14 @@
 /* eslint-disable no-plusplus */
 import { AnimationINKeysType, AnimationOUTKeysType } from "@animation";
 import ToastPortal from "@components/toast-portal";
-import { PositionsKeysType, VariantsKeys } from "@constants";
+import { PositionsKeysType, VariantsKeysType } from "@constants";
 import useToasts from "@hooks/useToasts";
 import React, { FC } from "react";
 
 import { Button, ContainerWrapper } from "./styled";
 
 export interface ToastContainerProps {
-  type: VariantsKeys;
+  type: VariantsKeysType;
   timeToDelete: number;
   position: PositionsKeysType;
   animationIn: AnimationINKeysType;

@@ -1,8 +1,8 @@
-import { Variants, VariantsKeys } from "@constants";
+import { Variants, VariantsKeysType } from "@constants";
 import styled, { css, Keyframes } from "styled-components";
 
 interface ToastWrapperProps {
-  variant: VariantsKeys;
+  variant: VariantsKeysType;
   gap: number;
   animationIn: Keyframes;
   animationOut: Keyframes;
@@ -41,7 +41,7 @@ export const CloseButton = styled.button`
 `;
 
 interface IconWrapperProps {
-  variant: VariantsKeys;
+  variant: VariantsKeysType;
 }
 
 export const IconWrapper = styled.div<IconWrapperProps>`

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
+import { IconsNamesByWariant } from "@constants";
 import useAnimation from "@hooks/useAnimation";
 import { DispatchEvent } from "@service/eventBus";
 import Events from "@service/events";
@@ -45,6 +46,8 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
     }, timeToDelete + animationDuration);
   }, []);
 
+  const iconName = IconsNamesByWariant[type];
+
   return (
     <div ref={ref}>
       <ToastWrapper
@@ -56,7 +59,7 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
         gap={gap}
       >
         <IconWrapper className="material-icons" variant={type}>
-          info
+          {iconName}
         </IconWrapper>
         <TextWrapper>
           <p>{title}</p>

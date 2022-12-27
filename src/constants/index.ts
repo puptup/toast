@@ -7,7 +7,7 @@ export const Variants = {
   success: { background: "#38DD93", color: "white" },
 };
 
-export type VariantsKeys = keyof typeof Variants;
+export type VariantsKeysType = keyof typeof Variants;
 
 export const Positions = {
   leftTop: { left: 0, top: 0 },
@@ -32,3 +32,10 @@ export const defaultToast: Omit<Toast, "id"> = {
 
 export const ADD_TOAST_EVENT = "add-toast";
 export const DELETE_TOAST_EVENT = "delete-toast";
+
+export const IconsNamesByWariant: Record<VariantsKeysType, string> = {
+  info: "info",
+  warning: "warning",
+  error: "bug_report",
+  success: "done",
+};

@@ -1,9 +1,9 @@
 import { AnimationINKeysType, AnimationOUTKeysType } from "@animation";
-import { PositionsKeysType, VariantsKeys } from "@constants";
+import { PositionsKeysType, VariantsKeysType } from "@constants";
 
 export interface Toast {
   id: string;
-  type: VariantsKeys;
+  type: VariantsKeysType;
   gap: number;
   position: PositionsKeysType;
   animationIn: AnimationINKeysType;
