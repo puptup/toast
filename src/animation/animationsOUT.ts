@@ -1,6 +1,6 @@
 import { keyframes } from "styled-components";
 
-export const fromRightToLeft = keyframes`
+const fromRightToLeft = keyframes`
   from {
     transform: translateX(0);
     opacity: 1;
@@ -12,7 +12,7 @@ export const fromRightToLeft = keyframes`
   }
 `;
 
-export const fromLeftToRight = keyframes`
+const fromLeftToRight = keyframes`
   from {
     transform: translateX(0);
     opacity: 1;
@@ -24,7 +24,7 @@ export const fromLeftToRight = keyframes`
   }
 `;
 
-export const fromTopToBottom = keyframes`
+const fromTopToBottom = keyframes`
   from {
     transform: translateY(0);
     opacity: 1;
@@ -36,7 +36,7 @@ export const fromTopToBottom = keyframes`
   }
 `;
 
-export const fromBottomToTop = keyframes`
+const fromBottomToTop = keyframes`
   from {
     transform: translateY(0);
     opacity: 1;
