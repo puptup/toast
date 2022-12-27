@@ -2,19 +2,30 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { PositionsKeysType } from "@constants";
-import toastService from "@service";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { EventBus } from "@service/eventBus";
+import { Toast } from "@types";
+import { useEffect, useMemo, useState } from "react";
 
 export const useToastsUpdater = (positon: PositionsKeysType) => {
-  const [_, setRerender] = useState(true);
-
-  const forceupdate = useCallback(() => {
-    setRerender((prev) => !prev);
-  }, []);
+  const [toasts, setToasts] = useState<Toast[]>([]);
 
   useEffect(() => {
-    toastService.setRerenderFunction(positon, forceupdate);
+    const AddToast = EventBus.getInstance().register(`add-toast-${positon}`, (toast: Toast) => {
+      setToasts((prev) => [...prev, toast]);
+    });
+
+    const DeleteToast = EventBus.getInstance().register(
+      `delete-toast-${positon}`,
+      (toast: Toast) => {
+        setToasts((prev) => prev.filter((element) => element.id !== toast.id));
+      }
+    );
+
+    return () => {
+      AddToast.unregister();
+      DeleteToast.unregister();
+    };
   }, []);
 
-  return toastService.getToasts().filter((toast) => toast.position === positon);
+  return toasts;
 };

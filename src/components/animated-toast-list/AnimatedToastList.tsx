@@ -45,7 +45,7 @@ const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element =>
               domNode.style.transition = "transform 0s";
               requestAnimationFrame(() => {
                 domNode.style.transform = "";
-                domNode.style.transition = "transform 100ms";
+                domNode.style.transition = "transform 300ms";
               });
             });
           }

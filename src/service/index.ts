@@ -1,9 +1,10 @@
 import { PositionsKeysType } from "@constants";
 import { Toast } from "@types";
-
+/** @deprecated * */
 class ToastService {
   private toasts: Toast[] = [];
   private rerenderFunc: { [key in PositionsKeysType]?: () => void } = {};
+  private instance: ToastService | null = null;
 
   setRerenderFunction = (position: PositionsKeysType, rerender: () => void) => {
     this.rerenderFunc[position] = rerender;
@@ -31,6 +32,6 @@ class ToastService {
   };
 }
 
-const toastService = new ToastService();
+// const toastService = new ToastService();
 
-export default toastService;
+// export default toastService;

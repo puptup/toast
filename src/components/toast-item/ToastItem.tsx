@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import useAnimation from "@hooks/useAnimation";
-import toastService from "@service";
+import { EventBus } from "@service/eventBus";
 import { Toast } from "@types";
 import React, { forwardRef, useEffect, useState } from "react";
 
 import { CloseButton, IconWrapper, TextWrapper, ToastWrapper } from "./styled";
 
-interface ToastItemProps {
+export interface ToastItemProps {
   toast: Toast;
 }
 
 const remove = (toast: Toast) => () => {
-  toastService.removeToast(toast);
+  EventBus.getInstance().dispatch<Toast>(`delete-toast-${toast.position}`, toast);
 };
 
 const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) => {
