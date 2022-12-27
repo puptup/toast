@@ -3,3 +3,4 @@ cypress.config.ts
 node_modules
 cypress
 rollup.config.mjs
+types.d.ts

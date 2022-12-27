@@ -11,7 +11,11 @@ interface ToastWrapperProps {
 }
 
 export const ToastWrapper = styled.div<ToastWrapperProps>`
-  width: 200px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
   position: relative;
   background-color: ${({ variant }) => Variants[variant].background};
   color: ${({ variant }) => Variants[variant].color};
@@ -20,4 +24,27 @@ export const ToastWrapper = styled.div<ToastWrapperProps>`
     css`
       ${out ? animationOut : animationIn} ${animationDuration}ms linear forwards
     ` || ""};
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export const CloseButton = styled.button`
+  display: block;
+  background-color: inherit;
+  border: 0;
+  height: fit-content;
+  cursor: pointer;
+`;
+
+interface IconWrapperProps {
+  variant: VariantsKeys;
+}
+
+export const IconWrapper = styled.div<IconWrapperProps>`
+  color: ${({ variant }) => Variants[variant].color};
+  user-select: none;
 `;
