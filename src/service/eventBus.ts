@@ -1,25 +1,17 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-plusplus */
-export interface Registry {
-  unregister: () => void;
-}
+import uniqid from "uniqid";
 
-export interface Callable {
+interface Callable {
   [key: string]: Function;
 }
 
-export interface Subscriber {
+interface Subscriber {
   [key: string]: Callable;
 }
 
-export interface IEventBus {
-  dispatch<T>(event: string, arg?: T): void;
-  register(event: string, callback: Function): Registry;
-}
+type Unsubscribe = () => void;
 
-export class EventBus implements IEventBus {
+export default class EventBus {
   private subscribers: Subscriber;
-  private static nextId = 0;
   private static instance?: EventBus = undefined;
 
   public static getInstance(): EventBus {
@@ -41,24 +33,26 @@ export class EventBus implements IEventBus {
       return;
     }
 
-    Object.keys(subscriber).forEach((key) => subscriber[key](arg));
+    Object.keys(subscriber).forEach((id) => subscriber[id](arg));
   }
 
-  public register(event: string, callback: Function): Registry {
-    const id = this.getNextId();
+  public subscribe(event: string, callback: Function): Unsubscribe {
+    const id = uniqid();
     if (!this.subscribers[event]) this.subscribers[event] = {};
 
     this.subscribers[event][id] = callback;
 
-    return {
-      unregister: () => {
-        delete this.subscribers[event][id];
-        if (Object.keys(this.subscribers[event]).length === 0) delete this.subscribers[event];
-      },
+    return () => {
+      delete this.subscribers[event][id];
+      if (Object.keys(this.subscribers[event]).length === 0) delete this.subscribers[event];
     };
   }
-
-  private getNextId(): number {
-    return EventBus.nextId++;
-  }
 }
+
+export const DispatchEvent = <T>(event: string, arg?: T): void => {
+  EventBus.getInstance().dispatch(event, arg);
+};
+
+export const SubscribeToEvent = (event: string, callback: Function): Unsubscribe => {
+  return EventBus.getInstance().subscribe(event, callback);
+};

@@ -1,5 +1,6 @@
 import { defaultToast } from "@constants";
-import { EventBus } from "@service/eventBus";
+import { DispatchEvent } from "@service/eventBus";
+import Events from "@service/events";
 import { Toast } from "@types";
 import { useCallback } from "react";
 import uniqid from "uniqid";
@@ -11,7 +12,7 @@ const useToasts = () => {
       ...defaultToast,
       ...toast,
     };
-    EventBus.getInstance().dispatch<Toast>(`add-toast-${toast.position}`, newToast);
+    DispatchEvent<Toast>(Events.AddToast(newToast.position), newToast);
   }, []);
 
   return {

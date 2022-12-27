@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import useAnimation from "@hooks/useAnimation";
-import { EventBus } from "@service/eventBus";
+import { DispatchEvent } from "@service/eventBus";
+import Events from "@service/events";
 import { Toast } from "@types";
 import React, { forwardRef, useEffect, useState } from "react";
 
@@ -12,7 +13,7 @@ export interface ToastItemProps {
 }
 
 const remove = (toast: Toast) => () => {
-  EventBus.getInstance().dispatch<Toast>(`delete-toast-${toast.position}`, toast);
+  DispatchEvent<Toast>(Events.DeleteToast(toast.position), toast);
 };
 
 const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) => {
