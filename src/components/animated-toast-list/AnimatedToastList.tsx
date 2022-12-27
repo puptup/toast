@@ -22,8 +22,10 @@ const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element =>
   }, [childrenWithRef]);
 
   useLayoutEffect(() => {
-    const newBoundingBox = calculateBoundingBoxes(prevChildren);
-    setPrevBoundingBox(newBoundingBox);
+    if (prevChildren) {
+      const newBoundingBox = calculateBoundingBoxes(prevChildren);
+      setPrevBoundingBox(newBoundingBox);
+    }
   }, [prevChildren]);
 
   useEffect(() => {
