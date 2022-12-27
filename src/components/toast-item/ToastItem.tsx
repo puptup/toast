@@ -12,7 +12,7 @@ export interface ToastItemProps {
   toast: Toast;
 }
 
-const remove = (toast: Toast) => () => {
+const remove = (toast: Toast) => {
   DispatchEvent<Toast>(Events.DeleteToast(toast.position), toast);
 };
 
@@ -32,17 +32,17 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
 
   const [out, setOut] = useState(false);
 
-  const handleOutAnimation = () => {
+  const handleOutAnimationAndRemove = () => {
     setOut(true);
+    setTimeout(() => {
+      remove(toast);
+    }, animationDuration / 2);
   };
 
   useEffect(() => {
     setTimeout(() => {
-      handleOutAnimation();
+      handleOutAnimationAndRemove();
     }, timeToDelete + animationDuration);
-    setTimeout(() => {
-      remove(toast)();
-    }, timeToDelete + 2 * animationDuration);
   }, []);
 
   return (
@@ -62,7 +62,7 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
           <p>{title}</p>
           <p>{description}</p>
         </TextWrapper>
-        <CloseButton type="button" onClick={remove(toast)}>
+        <CloseButton type="button" onClick={handleOutAnimationAndRemove}>
           <IconWrapper className="material-icons" variant={type}>
             close
           </IconWrapper>
