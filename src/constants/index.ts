@@ -20,7 +20,8 @@ export type PositionsKeysType = keyof typeof Positions;
 
 export const defaultToast: Omit<Toast, "id"> = {
   type: "info",
-  gap: 20,
+  spaceToEdge: 10,
+  spaceBetweenToasts: 20,
   animationDuration: 400,
   timeToDelete: 5000,
   animationIn: "fromBottomToTop",

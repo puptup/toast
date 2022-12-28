@@ -14,6 +14,10 @@ export interface ToastContainerProps {
   animationIn: AnimationINKeysType;
   animationOut: AnimationOUTKeysType;
   animationDuration: number;
+  title: string;
+  description: string;
+  spaceToEdge: number;
+  spaceBetweenToasts: number;
 }
 
 const ToastContainer: FC<ToastContainerProps> = ({
@@ -23,11 +27,26 @@ const ToastContainer: FC<ToastContainerProps> = ({
   animationIn,
   animationOut,
   animationDuration,
+  title,
+  description,
+  spaceToEdge,
+  spaceBetweenToasts,
 }) => {
   const { addToast } = useToasts();
 
   const handleToasts = () => {
-    addToast({ type, timeToDelete, position, animationIn, animationOut, animationDuration });
+    addToast({
+      type,
+      timeToDelete,
+      position,
+      animationIn,
+      animationOut,
+      animationDuration,
+      title,
+      description,
+      spaceBetweenToasts,
+      spaceToEdge,
+    });
   };
 
   return (

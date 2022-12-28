@@ -22,7 +22,8 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
     type,
     timeToDelete,
     title,
-    gap,
+    spaceToEdge,
+    spaceBetweenToasts,
     description,
     animationIn,
     animationOut,
@@ -56,7 +57,8 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
         animationDuration={animationDuration}
         out={out}
         variant={type}
-        gap={gap}
+        spaceToEdge={spaceToEdge}
+        spaceBetweenToasts={spaceBetweenToasts}
       >
         <IconWrapper className="material-icons" variant={type}>
           {iconName}

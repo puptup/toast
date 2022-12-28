@@ -50,6 +50,22 @@ export default {
         type: "radio",
       },
     },
+    title: {
+      type: "string",
+      defaultValue: "Title",
+    },
+    description: {
+      type: "string",
+      defaultValue: "Description",
+    },
+    spaceToEdge: {
+      type: "number",
+      defaultValue: 10,
+    },
+    spaceBetweenToasts: {
+      type: "number",
+      defaultValue: 20,
+    },
   },
 };
 

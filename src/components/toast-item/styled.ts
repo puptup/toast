@@ -3,14 +3,16 @@ import styled, { css, Keyframes } from "styled-components";
 
 interface ToastWrapperProps {
   variant: VariantsKeysType;
-  gap: number;
   animationIn: Keyframes;
   animationOut: Keyframes;
   animationDuration: number;
   out: boolean;
+  spaceBetweenToasts: number;
+  spaceToEdge: number;
 }
 
 export const ToastWrapper = styled.div<ToastWrapperProps>`
+  width: 200px;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -19,7 +21,7 @@ export const ToastWrapper = styled.div<ToastWrapperProps>`
   position: relative;
   background-color: ${({ variant }) => Variants[variant].background};
   color: ${({ variant }) => Variants[variant].color};
-  margin: ${({ gap }) => `${gap}px`};
+  margin: ${({ spaceBetweenToasts, spaceToEdge }) => `${spaceBetweenToasts}px ${spaceToEdge}px`};
   animation: ${({ animationIn, animationOut, animationDuration, out }) =>
     css`
       ${out ? animationOut : animationIn} ${animationDuration}ms linear forwards
