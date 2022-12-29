@@ -16,11 +16,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "./src",
+    "declaration": true,
+    "baseUrl": "./",
     "paths": {
-      "@*": ["*"]
-    }
+      "@*": ["./src/*"]
+    },
+
   },
-  "include": ["./src/**/*", "./rollup.config.mjs", "./types.d.ts"],
+  "include": ["./src/**/*", "rollup.config.mjs"],
   "exclude": ["node_modules"],
 }

@@ -13,12 +13,13 @@ export interface ToastItemProps {
   toast: Toast;
 }
 
-const remove = (toast: Toast) => {
+export const remove = (toast: Toast) => {
   DispatchEvent<Toast>(Events.DeleteToast(toast.position), toast);
 };
 
 const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) => {
   const {
+    id,
     type,
     timeToDelete,
     title,
@@ -59,6 +60,7 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
         variant={type}
         spaceToEdge={spaceToEdge}
         spaceBetweenToasts={spaceBetweenToasts}
+        data-testid={`toast-${id}`}
       >
         <IconWrapper className="material-icons" variant={type}>
           {iconName}

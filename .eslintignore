@@ -4,3 +4,4 @@ node_modules
 cypress
 rollup.config.mjs
 types.d.ts
+build

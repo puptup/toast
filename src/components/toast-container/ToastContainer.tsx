@@ -2,7 +2,7 @@
 import { AnimationINKeysType, AnimationOUTKeysType } from "@animation";
 import ToastPortal from "@components/toast-portal";
 import { PositionsKeysType, VariantsKeysType } from "@constants";
-import useToasts from "@hooks/useToasts";
+import addToast from "@service/addToast";
 import React, { FC } from "react";
 
 import { Button, ContainerWrapper } from "./styled";
@@ -32,8 +32,6 @@ const ToastContainer: FC<ToastContainerProps> = ({
   spaceToEdge,
   spaceBetweenToasts,
 }) => {
-  const { addToast } = useToasts();
-
   const handleToasts = () => {
     addToast({
       type,
