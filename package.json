@@ -1,6 +1,6 @@
 {
   "name": "puptuptoasts",
-  "version": "0.0.9",
+  "version": "0.0.8",
   "description": "Toast lib",
   "main": "./build/index.js",
   "type": "commonjs",
