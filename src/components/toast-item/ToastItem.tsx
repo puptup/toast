@@ -5,7 +5,7 @@ import useAnimation from "@hooks/useAnimation";
 import { DispatchEvent } from "@service/eventBus";
 import Events from "@service/events";
 import { Toast } from "@types";
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { CloseButton, IconWrapper, TextWrapper, ToastWrapper } from "./styled";
 
@@ -17,7 +17,7 @@ export const remove = (toast: Toast) => {
   DispatchEvent<Toast>(Events.DeleteToast(toast.position), toast);
 };
 
-const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) => {
+const ToastItem = ({ toast }: ToastItemProps) => {
   const {
     id,
     type,
@@ -51,7 +51,7 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
   const iconName = IconsNamesByWariant[type];
 
   return (
-    <div ref={ref}>
+    <div id={id}>
       <ToastWrapper
         animationIn={keyframeIn}
         animationOut={keyframeOut}
@@ -77,6 +77,6 @@ const ToastItem = forwardRef<HTMLDivElement, ToastItemProps>(({ toast }, ref) =>
       </ToastWrapper>
     </div>
   );
-});
+};
 
 export default React.memo(ToastItem);

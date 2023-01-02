@@ -2,7 +2,7 @@ import AnimatedToastList from "@components/animated-toast-list/AnimatedToastList
 import ToastItem from "@components/toast-item";
 import { PositionsKeysType } from "@constants";
 import { useToastsUpdater } from "@hooks/useToastsUpdater";
-import React, { createRef, FC } from "react";
+import React, { FC } from "react";
 
 import { ToastListWrapper } from "./styled";
 
@@ -17,7 +17,7 @@ const ToastList: FC<Props> = ({ position }) => {
     <ToastListWrapper position={position}>
       <AnimatedToastList>
         {toasts.map((toast) => (
-          <ToastItem key={toast.id} toast={toast} ref={createRef<HTMLDivElement>()} />
+          <ToastItem key={toast.id} toast={toast} />
         ))}
       </AnimatedToastList>
     </ToastListWrapper>

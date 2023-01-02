@@ -1,60 +1,51 @@
-/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-param-reassign */
 import calculateBoundingBoxes, { BoundingBoxes } from "@helpers/calculateBoundingBoxes";
-import usePrevious from "@hooks/usePrevious";
-import React, { RefObject, useEffect, useLayoutEffect, useState } from "react";
-
-export type ChildrenWithRef = (JSX.Element & { ref: RefObject<HTMLDivElement> })[];
+import usePreviousValue from "@hooks/usePreviousValue";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type AnimatedToastListProps = {
   children: JSX.Element[];
 };
 
 const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element => {
-  const childrenWithRef = children as ChildrenWithRef;
+  const ref = useRef<HTMLDivElement>(null);
+  const [boundingBoxes, setBoundingBoxes] = useState<BoundingBoxes>({});
 
-  const [boundingBox, setBoundingBox] = useState<BoundingBoxes>({});
-  const [prevBoundingBox, setPrevBoundingBox] = useState<BoundingBoxes>({});
-  const prevChildren = usePrevious(childrenWithRef);
-
-  useLayoutEffect(() => {
-    const newBoundingBox = calculateBoundingBoxes(childrenWithRef);
-    setBoundingBox(newBoundingBox);
-  }, [childrenWithRef]);
+  const prevBoundingBoxes = usePreviousValue<BoundingBoxes>(boundingBoxes);
 
   useLayoutEffect(() => {
-    if (prevChildren) {
-      const newBoundingBox = calculateBoundingBoxes(prevChildren);
-      setPrevBoundingBox(newBoundingBox);
+    if (ref.current) {
+      const boxes = calculateBoundingBoxes(ref.current);
+      setBoundingBoxes(boxes);
     }
-  }, [prevChildren]);
+  }, [children]);
 
   useEffect(() => {
-    const prevBoundingBoxLength = Object.keys(prevBoundingBox).length;
-    if (prevBoundingBoxLength) {
-      React.Children.forEach(childrenWithRef, (child) => {
-        const { key, ref } = child;
-        if (!key || !ref.current) return;
-        const domNode = ref.current;
-        const firstBox = prevBoundingBox[key];
-        const lastBox = boundingBox[key];
-        if (firstBox) {
-          const changeInY = firstBox.top - lastBox.top;
+    if (prevBoundingBoxes) {
+      const prevBoundingBoxesLength = Object.keys(prevBoundingBoxes).length;
+      if (prevBoundingBoxesLength && ref.current) {
+        const container = [...ref.current.children] as HTMLDivElement[];
+        container.forEach((child) => {
+          const id = child.getAttribute("id")!;
+          const firstBox = prevBoundingBoxes[id]?.top;
+          const lastBox = boundingBoxes[id]?.top;
+          const changeInY = firstBox - lastBox;
           if (changeInY) {
             requestAnimationFrame(() => {
-              domNode.style.transform = `translateY(${changeInY}px)`;
-              domNode.style.transition = "transform 0s";
+              child.style.transform = `translateY(${changeInY}px)`;
+              child.style.transition = "transform 0s";
               requestAnimationFrame(() => {
-                domNode.style.transform = "";
-                domNode.style.transition = "transform 300ms";
+                child.style.transform = "";
+                child.style.transition = "transform 300ms";
               });
             });
           }
-        }
-      });
+        });
+      }
     }
-  }, [boundingBox, prevBoundingBox, childrenWithRef]);
+  }, [prevBoundingBoxes, boundingBoxes]);
 
-  return <>{childrenWithRef}</>;
+  return <div ref={ref}>{children}</div>;
 };
 
 export default AnimatedToastList;

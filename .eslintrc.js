@@ -39,6 +39,7 @@ module.exports = {
     "no-restricted-exports": 'off',
     "react/jsx-props-no-spreading": 'off',
     "import/no-extraneous-dependencies": 'off',
+    "no-restricted-syntax": "off",
     "prettier/prettier": ["error", {
       trailingComma: "es5",
       singleQuote: false,
