@@ -16,7 +16,7 @@ export default {
     timeToDelete: {
       type: "number",
       defaultValue: 5000,
-      options: [5000, 7000, 10000],
+      options: [1500, 5000, 7000, 10000],
       control: {
         type: "radio",
       },
