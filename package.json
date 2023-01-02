@@ -1,6 +1,6 @@
 {
   "name": "puptuptoasts",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Toast lib",
   "main": "./build/index.js",
   "type": "commonjs",
@@ -79,7 +79,7 @@
   "scripts": {
     "build": "rollup -c -o build/index.js --bundleConfigAsCjs",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s public",
     "cypress": "cypress run",
     "test": "jest"
   },
