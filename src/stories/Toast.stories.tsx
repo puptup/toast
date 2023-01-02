@@ -22,21 +22,21 @@ export default {
       },
     },
     position: {
-      defaultValie: "rightTop",
+      defaultValue: "rightTop",
       options: ["rightTop", "rightBottom", "leftTop", "leftBottom"],
       control: {
         type: "select",
       },
     },
     animationIn: {
-      defaultValie: "fromBottomToTop",
+      defaultValue: "fromBottomToTop",
       options: ["fromBottomToTop", "fromTopToBottom", "fromLeftToRight", "fromRightToLeft"],
       control: {
         type: "select",
       },
     },
     animationOut: {
-      defaultValie: "fromLeftToRight",
+      defaultValue: "fromLeftToRight",
       options: ["fromBottomToTop", "fromTopToBottom", "fromLeftToRight", "fromRightToLeft"],
       control: {
         type: "select",
