@@ -15,7 +15,7 @@ const ToastList: FC<Props> = ({ position }) => {
 
   return (
     <ToastListWrapper position={position}>
-      <AnimatedToastList>
+      <AnimatedToastList position={position}>
         {toasts.map((toast) => (
           <ToastItem key={toast.id} toast={toast} />
         ))}

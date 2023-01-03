@@ -1,13 +1,26 @@
 /* eslint-disable no-param-reassign */
+import { PositionsKeysType } from "@constants";
 import calculateBoundingBoxes, { BoundingBoxes } from "@helpers/calculateBoundingBoxes";
 import usePreviousValue from "@hooks/usePreviousValue";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 type AnimatedToastListProps = {
   children: JSX.Element[];
+  position: PositionsKeysType;
 };
 
-const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element => {
+interface WrapperProps {
+  position: PositionsKeysType;
+}
+
+const Wrapper = styled.div<WrapperProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ position }) => (position.includes("left") ? "flex-start" : "flex-end")};
+`;
+
+const AnimatedToastList = ({ children, position }: AnimatedToastListProps): JSX.Element => {
   const ref = useRef<HTMLDivElement>(null);
   const [boundingBoxes, setBoundingBoxes] = useState<BoundingBoxes>({});
 
@@ -45,7 +58,11 @@ const AnimatedToastList = ({ children }: AnimatedToastListProps): JSX.Element =>
     }
   }, [prevBoundingBoxes, boundingBoxes]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <Wrapper position={position} ref={ref}>
+      {children}
+    </Wrapper>
+  );
 };
 
 export default AnimatedToastList;

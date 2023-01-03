@@ -10,7 +10,4 @@ export const ToastListWrapper = styled.div<ToastListWrapperProps>`
   ${({ position }) => {
     return Positions[position];
   }};
-  display: flex;
-  flex-direction: column;
-  align-items: ${({ position }) => (position.includes("left") ? "flex-start" : "flex-end")};
 `;
