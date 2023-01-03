@@ -3,5 +3,6 @@ cypress.config.ts
 node_modules
 cypress
 rollup.config.mjs
+rollup.config.cjs
 types.d.ts
-build
+dist
