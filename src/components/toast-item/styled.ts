@@ -12,7 +12,7 @@ interface ToastWrapperProps {
 }
 
 export const ToastWrapper = styled.div<ToastWrapperProps>`
-  width: 200px;
+  width: fit-content;
   padding: 10px;
   display: flex;
   align-items: center;

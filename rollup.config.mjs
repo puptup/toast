@@ -1,12 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
-import babel, {getBabelInputPlugin} from '@rollup/plugin-babel'
 import replace from '@rollup/plugin-replace';
 
 import external from "rollup-plugin-peer-deps-external"
-import dts from "rollup-plugin-dts"
-
 
 export default [
   {
