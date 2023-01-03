@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { IconsNamesByWariant } from "@constants";
+import { IconsNamesByVariant } from "@constants";
 import useAnimation from "@hooks/useAnimation";
 import { DispatchEvent } from "@service/eventBus";
 import Events from "@service/events";
@@ -48,7 +48,7 @@ const ToastItem = ({ toast }: ToastItemProps) => {
     }, timeToDelete + animationDuration);
   }, []);
 
-  const iconName = IconsNamesByWariant[type];
+  const iconName = IconsNamesByVariant[type];
 
   return (
     <div id={id}>

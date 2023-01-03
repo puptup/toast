@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import ErrorIndicator from "../error-indicator";
-
 interface ErrorBoundryState {
   hasError: boolean;
 }
@@ -27,7 +25,7 @@ class ErrorBoundry extends Component<ErrorBoundryProps, ErrorBoundryState> {
     const { hasError } = this.state;
     const { children } = this.props;
     if (hasError) {
-      return <ErrorIndicator />;
+      return <div>Uuups. Something went wrong...</div>;
     }
     return children;
   }
