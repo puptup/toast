@@ -1,13 +1,13 @@
 {
   "name": "puptuptoasts",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "description": "Toast lib",
   "main": "./dist/index.js",
   "files": [
     "dist",
     "package.json"
   ],
-  "type": "commonjs",
+  "type": "module",
   "author": "puptup <putumoney@gmail.com>",
   "license": "MIT",
   "devDependencies": {
