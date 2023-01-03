@@ -68,12 +68,15 @@
     "tsconfig-paths-webpack-plugin": "^4.0.0",
     "ttypescript": "^1.5.15",
     "typescript": "*",
-    "typescript-transform-paths": "^3.4.4"
-  },
-  "peerDependencies": {
+    "typescript-transform-paths": "^3.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
+    "styled-components": ">=5.3.6"
   },
   "dependencies": {
     "uniqid": "^5.4.0"
