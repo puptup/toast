@@ -1,0 +1,12 @@
+src/
+node_modules/
+.storybook
+.babel
+.eslingignore
+.eslintrc.js
+.babel
+cypress/
+.storybook/
+cypress.config.ts
+rollup.config.mjs
+tsconfig.json

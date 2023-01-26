@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast should be error toast 1`] = `
+<div
+  class="sc-bcXHqe rQoTR"
+  data-testid="toast-test"
+>
+  <div
+    class="sc-hLBbgP hClGEU material-icons"
+  >
+    bug_report
+  </div>
+  <div
+    class="sc-gswNZR etjVmh"
+  >
+    <p>
+      Toast
+    </p>
+    <p>
+      Toast description
+    </p>
+  </div>
+  <button
+    class="sc-dkrFOg Rsggx"
+    type="button"
+  >
+    <div
+      class="sc-hLBbgP hClGEU material-icons"
+    >
+      close
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Toast should be info toast 1`] = `
+<div
+  class="sc-bcXHqe fQnZmo"
+  data-testid="toast-test"
+>
+  <div
+    class="sc-hLBbgP hClGEU material-icons"
+  >
+    info
+  </div>
+  <div
+    class="sc-gswNZR etjVmh"
+  >
+    <p>
+      Toast
+    </p>
+    <p>
+      Toast description
+    </p>
+  </div>
+  <button
+    class="sc-dkrFOg Rsggx"
+    type="button"
+  >
+    <div
+      class="sc-hLBbgP hClGEU material-icons"
+    >
+      close
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Toast should be success toast 1`] = `
+<div
+  class="sc-bcXHqe ckrIQx"
+  data-testid="toast-test"
+>
+  <div
+    class="sc-hLBbgP hClGEU material-icons"
+  >
+    done
+  </div>
+  <div
+    class="sc-gswNZR etjVmh"
+  >
+    <p>
+      Toast
+    </p>
+    <p>
+      Toast description
+    </p>
+  </div>
+  <button
+    class="sc-dkrFOg Rsggx"
+    type="button"
+  >
+    <div
+      class="sc-hLBbgP hClGEU material-icons"
+    >
+      close
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Toast should be warning toast 1`] = `
+<div
+  class="sc-bcXHqe fQnZmo"
+  data-testid="toast-test"
+>
+  <div
+    class="sc-hLBbgP hClGEU material-icons"
+  >
+    info
+  </div>
+  <div
+    class="sc-gswNZR etjVmh"
+  >
+    <p>
+      Toast
+    </p>
+    <p>
+      Toast description
+    </p>
+  </div>
+  <button
+    class="sc-dkrFOg Rsggx"
+    type="button"
+  >
+    <div
+      class="sc-hLBbgP hClGEU material-icons"
+    >
+      close
+    </div>
+  </button>
+</div>
+`;
